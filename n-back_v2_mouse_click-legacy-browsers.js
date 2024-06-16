@@ -2,14 +2,6 @@
  * N-Back_V2_Mouse_Click Test *
  ******************************/
 
-import { core, data, sound, util, visual, hardware } from './lib/psychojs-2022.2.5.js';
-const { PsychoJS } = core;
-const { TrialHandler, MultiStairHandler } = data;
-const { Scheduler } = util;
-//some handy aliases as in the psychopy scripts;
-const { abs, sin, cos, PI: pi, sqrt } = Math;
-const { round } = util;
-
 
 // store info about the experiment session:
 let expName = 'n-back_v2_mouse_click';  // from the Builder filename that created this script
@@ -233,9 +225,10 @@ function welcomeRoutineBegin(snapshot) {
     welcomeComponents.push(text_welcome);
     welcomeComponents.push(mouse_resp_welcome);
     
-    for (const thisComponent of welcomeComponents)
+    welcomeComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
+       });
     return Scheduler.Event.NEXT;
   }
 }
@@ -308,11 +301,11 @@ function welcomeRoutineEachFrame() {
     }
     
     continueRoutine = false;  // reverts to True if at least one component still running
-    for (const thisComponent of welcomeComponents)
+    welcomeComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
         continueRoutine = true;
-        break;
       }
+    });
     
     // refresh the screen if continuing
     if (continueRoutine && routineTimer.getTime() > 0) {
@@ -327,11 +320,11 @@ function welcomeRoutineEachFrame() {
 function welcomeRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'welcome' ---
-    for (const thisComponent of welcomeComponents) {
+    welcomeComponents.forEach( function(thisComponent) {
       if (typeof thisComponent.setAutoDraw === 'function') {
         thisComponent.setAutoDraw(false);
       }
-    }
+    });
     // store data for psychoJS.experiment (ExperimentHandler)
     if (mouse_resp_welcome.x) {  psychoJS.experiment.addData('mouse_resp_welcome.x', mouse_resp_welcome.x[0])};
     if (mouse_resp_welcome.y) {  psychoJS.experiment.addData('mouse_resp_welcome.y', mouse_resp_welcome.y[0])};
@@ -366,14 +359,15 @@ function trialsLoopBegin(trialsLoopScheduler, snapshot) {
     currentLoop = trials;  // we're now the current loop
     
     // Schedule all the trials in the trialList:
-    for (const thisTrial of trials) {
+    trials.forEach(function() {
       snapshot = trials.getSnapshot();
+    
       trialsLoopScheduler.add(importConditions(snapshot));
       trialsLoopScheduler.add(trialRoutineBegin(snapshot));
       trialsLoopScheduler.add(trialRoutineEachFrame());
       trialsLoopScheduler.add(trialRoutineEnd(snapshot));
       trialsLoopScheduler.add(trialsLoopEndIteration(trialsLoopScheduler, snapshot));
-    }
+    });
     
     return Scheduler.Event.NEXT;
   }
@@ -440,9 +434,10 @@ function trialRoutineBegin(snapshot) {
     trialComponents.push(letter);
     trialComponents.push(mouse_resp);
     
-    for (const thisComponent of trialComponents)
+    trialComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
+       });
     return Scheduler.Event.NEXT;
   }
 }
@@ -523,11 +518,11 @@ function trialRoutineEachFrame() {
     }
     
     continueRoutine = false;  // reverts to True if at least one component still running
-    for (const thisComponent of trialComponents)
+    trialComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
         continueRoutine = true;
-        break;
       }
+    });
     
     // refresh the screen if continuing
     if (continueRoutine && routineTimer.getTime() > 0) {
@@ -542,11 +537,11 @@ function trialRoutineEachFrame() {
 function trialRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'trial' ---
-    for (const thisComponent of trialComponents) {
+    trialComponents.forEach( function(thisComponent) {
       if (typeof thisComponent.setAutoDraw === 'function') {
         thisComponent.setAutoDraw(false);
       }
-    }
+    });
     // store data for psychoJS.experiment (ExperimentHandler)
     psychoJS.experiment.addData('mouse_resp.x', mouse_resp.x);
     psychoJS.experiment.addData('mouse_resp.y', mouse_resp.y);
@@ -570,8 +565,6 @@ var nb_key;
 var nb_target;
 var nInCorr;
 var nb_no_target;
-var msg;
-var responses;
 var endComponents;
 function endRoutineBegin(snapshot) {
   return async function () {
@@ -584,8 +577,7 @@ function endRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     routineTimer.add(60.000000);
 	
-	
-	// Calculate nb correct & incorrect
+		// Calculate nb correct & incorrect
     nCorr = 0;
     nb_target = 0;
     nInCorr = 0;
@@ -624,9 +616,6 @@ function endRoutineBegin(snapshot) {
     ;	
 	
 	
-	
-	
-	
     // update component parameters for each repeat
     text_end.setText(msg);
     // setup some python lists for storing info about the mouse_resp_end
@@ -645,9 +634,10 @@ function endRoutineBegin(snapshot) {
     endComponents.push(mouse_resp_end);
     endComponents.push(text_end_quit);
     
-    for (const thisComponent of endComponents)
+    endComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
+       });
     return Scheduler.Event.NEXT;
   }
 }
@@ -739,11 +729,11 @@ function endRoutineEachFrame() {
     }
     
     continueRoutine = false;  // reverts to True if at least one component still running
-    for (const thisComponent of endComponents)
+    endComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
         continueRoutine = true;
-        break;
       }
+    });
     
     // refresh the screen if continuing
     if (continueRoutine && routineTimer.getTime() > 0) {
@@ -758,11 +748,11 @@ function endRoutineEachFrame() {
 function endRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'end' ---
-    for (const thisComponent of endComponents) {
+    endComponents.forEach( function(thisComponent) {
       if (typeof thisComponent.setAutoDraw === 'function') {
         thisComponent.setAutoDraw(false);
       }
-    }
+    });
     // store data for psychoJS.experiment (ExperimentHandler)
     if (mouse_resp_end.x) {  psychoJS.experiment.addData('mouse_resp_end.x', mouse_resp_end.x[0])};
     if (mouse_resp_end.y) {  psychoJS.experiment.addData('mouse_resp_end.y', mouse_resp_end.y[0])};
